@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
 /** Wraps children with a scroll-triggered fade-up reveal using IntersectionObserver. */
 export function Reveal({
@@ -9,7 +9,7 @@ export function Reveal({
 }: {
   children: ReactNode;
   delay?: number;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
   className?: string;
 }) {
   const ref = useRef<HTMLElement | null>(null);
