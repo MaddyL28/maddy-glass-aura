@@ -1,3 +1,4 @@
+import React from "react";
 import { Reveal } from "./Reveal";
 import { Typewriter } from "./Typewriter";
 
@@ -65,8 +66,12 @@ export function Hero() {
             >
               View my work
             </a>
-            <a href="#contact" className="glass rounded-full px-6 py-3 text-sm font-medium hover:bg-white/10">
-              Get in touch
+            <a
+              href="https://drive.google.com/uc?export=download&id=1JeO08xhYfY0S8Sk4Y3-JO5hqXxPo2rWz"
+              download
+              className="glass rounded-full px-6 py-3 text-sm font-medium hover:bg-white/10"
+            >
+              Download Resume
             </a>
           </div>
         </Reveal>
@@ -206,36 +211,104 @@ export function Projects() {
   );
 }
 
+import { 
+  BarChart3, 
+  FileSpreadsheet, 
+  Database, 
+  Binary, 
+  Terminal, 
+  Cpu 
+} from "lucide-react";
+
 /* ============ SKILLS ============ */
 const skills = [
-  { name: "Frontend", items: ["React", "TypeScript", "Next.js", "Tailwind", "TanStack"] },
-  { name: "Design", items: ["Figma", "Design Systems", "Motion", "Prototyping"] },
-  { name: "Backend", items: ["Node.js", "Postgres", "tRPC", "Supabase"] },
-  { name: "Craft", items: ["Accessibility", "Performance", "SEO", "Testing"] },
+  { name: "Power BI", proficiency: 80, icon: BarChart3, desc: "Data visualization & dashboard design" },
+  { name: "Excel", proficiency: 90, icon: FileSpreadsheet, desc: "Advanced modeling & data analysis" },
+  { name: "SQL", proficiency: 80, icon: Database, desc: "Database querying & data extraction" },
+  { name: "R", proficiency: 70, icon: Binary, desc: "Statistical computing & analysis" },
+  { name: "Python", proficiency: 80, icon: Terminal, desc: "Data science & automation scripting" },
+  { name: "Machine Learning", proficiency: 70, icon: Cpu, desc: "Predictive modeling & algorithms" },
 ];
+
+function SkillCard({ name, proficiency, icon: Icon, desc, delay }: { name: string; proficiency: number; icon: any; desc: string; delay: number }) {
+  const [hovered, setHovered] = React.useState(false);
+  const [width, setWidth] = React.useState(0);
+
+  React.useEffect(() => {
+    if (hovered) {
+      const timeout = setTimeout(() => setWidth(proficiency), 50);
+      return () => clearTimeout(timeout);
+    } else {
+      setWidth(0);
+    }
+  }, [hovered, proficiency]);
+
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="glass group relative aspect-square w-full rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex flex-col justify-between overflow-hidden cursor-pointer"
+    >
+      {/* Background glow on hover */}
+      <div className="absolute -inset-px bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+
+      {/* Top Section: Icon & Percentage */}
+      <div className="relative z-10 flex items-center justify-between w-full">
+        <div className="rounded-2xl bg-white/5 p-3 text-primary group-hover:text-accent transition-colors duration-300">
+          <Icon className="h-6 w-6 sm:h-8 sm:w-8" />
+        </div>
+        <span className="text-xl font-bold text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+          {proficiency}%
+        </span>
+      </div>
+
+      {/* Content Section */}
+      <div className="relative z-10 mt-auto">
+        <h3 className="text-lg font-bold sm:text-xl text-foreground group-hover:text-gradient transition-all duration-300">
+          {name}
+        </h3>
+        
+        {/* Dynamic height helper to animate desc & progress bar */}
+        <div className="h-0 opacity-0 group-hover:h-16 group-hover:opacity-100 transition-all duration-500 ease-out overflow-hidden mt-1">
+          <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+            {desc}
+          </p>
+          <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-primary via-secondary to-accent shadow-[0_0_12px] shadow-primary/40 transition-all duration-700 ease-out"
+              style={{ width: `${width}%` }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Skills() {
   return (
     <section id="skills" className="px-4 py-24 sm:px-6 sm:py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeader eyebrow="Skills" title="Tools of the trade" />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {skills.map((g, i) => (
-            <Reveal key={g.name} delay={i * 80}>
-              <GlassCard className="h-full">
-                <div className="mb-4 text-sm uppercase tracking-[0.18em] text-muted-foreground">{g.name}</div>
-                <ul className="space-y-2">
-                  {g.items.map((it) => (
-                    <li key={it} className="flex items-center gap-2 text-foreground/90">
-                      <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-primary to-accent" />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
-            </Reveal>
-          ))}
-        </div>
+      <div className="mx-auto max-w-5xl">
+        <SectionHeader 
+          eyebrow="Skills" 
+          title="Tools & Technologies" 
+          subtitle="Hover over each tool to view proficiency and description." 
+        />
+        
+        <Reveal>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {skills.map((s, i) => (
+              <SkillCard 
+                key={s.name} 
+                name={s.name} 
+                proficiency={s.proficiency} 
+                icon={s.icon} 
+                desc={s.desc}
+                delay={i * 100} 
+              />
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -300,18 +373,11 @@ export function Contact() {
         />
         <Reveal>
           <GlassCard className="text-center">
-            <a
-              href="mailto:hello@maddyle.dev"
-              className="text-2xl font-bold text-gradient sm:text-4xl"
-            >
-              hello@maddyle.dev
-            </a>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               {[
-                { l: "GitHub", h: "#" },
-                { l: "LinkedIn", h: "#" },
-                { l: "Twitter", h: "#" },
-                { l: "Dribbble", h: "#" },
+                { l: "GitHub", h: "https://github.com/MaddyL28" },
+                { l: "LinkedIn", h: "https://www.linkedin.com/in/maddy-le-b190b3300/" },
+                { l: "Gmail", h: "mailto:maddylej823@gmail.com" },
               ].map((s) => (
                 <a
                   key={s.l}
