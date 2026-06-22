@@ -142,11 +142,13 @@ export function About() {
 /* ============ PROJECTS ============ */
 const projects = [
   {
-    title: "Lumen Analytics",
-    tag: "SaaS · Dashboard",
-    desc: "A realtime analytics platform with delightful charts and a customizable widget grid.",
-    stack: ["React", "TS", "D3"],
+    title: "Adventure Works Sales Analytics",
+    tag: "Data Analytics · Power BI",
+    desc: "A sales performance analytics project transforming raw business data into actionable insights across revenue, profit, customers, products, and returns.",
+    stack: ["Power BI", "DAX", "Power Query"],
     accent: "from-primary/40 to-secondary/30",
+    image: "/images/adventure-works.png",
+    link: "https://github.com/MaddyL28/Adventure-Works-Sales-Analytics-Dashboard",
   },
   {
     title: "Drift Studio",
@@ -184,12 +186,27 @@ export function Projects() {
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 80}>
               <GlassCard className="group h-full">
-                <div className={`mb-6 aspect-[16/10] w-full rounded-2xl bg-gradient-to-br ${p.accent} relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_55%)]" />
-                  <div className="absolute bottom-4 left-4 right-4 glass rounded-xl p-3 text-xs text-foreground/80">
+                <div className={`mb-6 aspect-[16/10] w-full rounded-2xl bg-gradient-to-br ${p.accent} relative overflow-hidden flex items-center justify-center`}>
+                  {p.image ? (
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <>
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_55%)]" />
+                      <div className="absolute bottom-4 left-4 right-4 glass rounded-xl p-3 text-xs text-foreground/80">
+                        {p.tag}
+                      </div>
+                    </>
+                  )}
+                </div>
+                {p.image && (
+                  <div className="mb-2 text-xs font-semibold tracking-wider uppercase text-primary/90">
                     {p.tag}
                   </div>
-                </div>
+                )}
                 <h3 className="text-2xl font-bold">{p.title}</h3>
                 <p className="mt-2 text-muted-foreground">{p.desc}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -199,9 +216,9 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-6 flex items-center gap-2 text-sm text-primary transition group-hover:gap-3">
+                <a href={p.link} target="_blank" className="mt-6 flex items-center gap-2 text-sm text-primary transition group-hover:gap-3">
                   View case study <span aria-hidden>→</span>
-                </div>
+                </a>
               </GlassCard>
             </Reveal>
           ))}
@@ -211,13 +228,13 @@ export function Projects() {
   );
 }
 
-import { 
-  BarChart3, 
-  FileSpreadsheet, 
-  Database, 
-  Binary, 
-  Terminal, 
-  Cpu 
+import {
+  BarChart3,
+  FileSpreadsheet,
+  Database,
+  Binary,
+  Terminal,
+  Cpu
 } from "lucide-react";
 
 /* ============ SKILLS ============ */
@@ -267,7 +284,7 @@ function SkillCard({ name, proficiency, icon: Icon, desc, delay }: { name: strin
         <h3 className="text-lg font-bold sm:text-xl text-foreground group-hover:text-gradient transition-all duration-300">
           {name}
         </h3>
-        
+
         {/* Dynamic height helper to animate desc & progress bar */}
         <div className="h-0 opacity-0 group-hover:h-16 group-hover:opacity-100 transition-all duration-500 ease-out overflow-hidden mt-1">
           <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
@@ -289,22 +306,22 @@ export function Skills() {
   return (
     <section id="skills" className="px-4 py-24 sm:px-6 sm:py-32">
       <div className="mx-auto max-w-5xl">
-        <SectionHeader 
-          eyebrow="Skills" 
-          title="Tools & Technologies" 
-          subtitle="Hover over each tool to view proficiency and description." 
+        <SectionHeader
+          eyebrow="Skills"
+          title="Tools & Technologies"
+          subtitle="Hover over each tool to view proficiency and description."
         />
-        
+
         <Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((s, i) => (
-              <SkillCard 
-                key={s.name} 
-                name={s.name} 
-                proficiency={s.proficiency} 
-                icon={s.icon} 
+              <SkillCard
+                key={s.name}
+                name={s.name}
+                proficiency={s.proficiency}
+                icon={s.icon}
                 desc={s.desc}
-                delay={i * 100} 
+                delay={i * 100}
               />
             ))}
           </div>
@@ -317,23 +334,17 @@ export function Skills() {
 /* ============ EXPERIENCE ============ */
 const experience = [
   {
-    role: "Senior Product Engineer",
-    company: "Northwind Labs",
-    period: "2023 — Present",
-    desc: "Leading the design-systems team, shipping a unified component library across 6 products.",
+    role: "Data Analyst Intern",
+    company: "Helping Hand Aged Care",
+    period: "Jan 2026 — Apr 2026",
+    desc: "Applied SQL, Python, and Power BI to support data migration, workforce analytics, and business reporting initiatives. Developed an automated absenteeism analytics solution that combined operational, holiday, and cultural event data to help stakeholders identify workforce trends and support staffing decisions.",
   },
   {
-    role: "Product Designer & Developer",
-    company: "Drift Studio",
-    period: "2021 — 2023",
-    desc: "Designed and built award-winning marketing experiences for fintech and SaaS clients.",
-  },
-  {
-    role: "Frontend Engineer",
-    company: "Lumen",
-    period: "2019 — 2021",
-    desc: "Built the realtime dashboard from scratch and grew the frontend team from 2 to 8.",
-  },
+    role: "Data Analyst",
+    company: "University of South Australia ",
+    period: "May 2025 — Sep 2025",
+    desc: "Applied Python, machine learning, and data mining techniques to analyse patient health records and identify fall-risk factors. Developed analytical models and visual reporting solutions that uncovered high-risk patient profiles and condition relationships, supporting researchers in understanding fall-risk drivers and informing healthcare decision-making.",
+  }
 ];
 
 export function Experience() {
