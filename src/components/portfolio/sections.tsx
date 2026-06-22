@@ -1,6 +1,7 @@
 import React from "react";
 import { Reveal } from "./Reveal";
 import { Typewriter } from "./Typewriter";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 /** Reusable glass card */
 function GlassCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -73,6 +74,26 @@ export function Hero() {
             >
               Download Resume
             </a>
+          </div>
+        </Reveal>
+        <Reveal delay={600}>
+          <div className="mt-8 flex justify-center gap-4">
+            {[
+              { icon: Github, h: "https://github.com/MaddyL28", label: "GitHub" },
+              { icon: Linkedin, h: "https://www.linkedin.com/in/maddy-le-b190b3300/", label: "LinkedIn" },
+              { icon: Mail, h: "mailto:maddylej823@gmail.com", label: "Email" },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.h}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="rounded-full bg-white/5 p-3 text-muted-foreground hover:bg-white/10 hover:text-primary transition-all duration-300 hover:scale-110 border border-white/5 hover:border-white/10"
+              >
+                <s.icon className="h-5 w-5" />
+              </a>
+            ))}
           </div>
         </Reveal>
       </div>
