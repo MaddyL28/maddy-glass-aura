@@ -49,14 +49,13 @@ export function Hero() {
             I build{" "}
             <Typewriter
               className="text-foreground"
-              words={["beautiful interfaces.", "fast web experiences.", "accessible products.", "thoughtful design systems."]}
+              words={["data-driven insights.", "interactive dashboards.", "business intelligence solutions.", "actionable data storytelling."]}
             />
           </p>
         </Reveal>
         <Reveal delay={360}>
           <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Full-stack designer & engineer crafting modern, performant interfaces with a love
-            for motion, type, and tiny details.
+            Data analyst graduate experienced in data cleaning, data analysis, and dashboard development to solve business problems and support decision-making, improving company performance and KPIs using SQL, Python, and Power BI.
           </p>
         </Reveal>
         <Reveal delay={480}>
