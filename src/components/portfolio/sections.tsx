@@ -135,14 +135,16 @@ export function About() {
             <GlassCard className="h-full">
               <h3 className="text-2xl font-bold sm:text-3xl"> Data Analyst based in Adelaide.</h3>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                I'm Maddy — a product-minded developer focused on the seam between design and
-                code. Over the past few years I've helped startups and studios ship interfaces
-                that feel alive: fast load times, generous motion, and details you only notice
-                because they feel right.
+                I’m a data analyst graduate who’s genuinely excited about turning messy, raw data into clear insights that actually drive decisions. I enjoy digging into data, finding patterns others might miss, and presenting results in a way that makes sense to both technical and non-technical audiences.
+
+I’ve built hands-on experience working with SQL, Power BI, and Python to analyse real-world datasets, from sales performance to customer behaviour. My projects focus on end-to-end analytics — cleaning data, building structured models, and creating interactive dashboards that highlight key business insights.
+
+What I bring is more than just technical skills. I focus on understanding the business problem first, asking the right questions, and making sure the insights I deliver are practical and actionable — not just “nice charts.”
+
+I’m currently looking to kick-start my career in data analytics, where I can contribute, keep learning, and add real value from day one.
               </p>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                When I'm not at the keyboard you'll find me sketching type, running coastal
-                trails, or hunting the city's best matcha latte.
+               When I’m not at the keyboard, I’m usually out for a walk to clear my mind, taking care of my plants, cooking, or exploring new restaurants and cuisines.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["Problem-Solving", "Proactive", "Team work", "Data Visualisation", "Data Analysis"].map((t) => (
