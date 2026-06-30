@@ -264,7 +264,6 @@ const skills = [
   { name: "Power BI", proficiency: 80, icon: BarChart3, desc: "Data visualization & dashboard design" },
   { name: "Excel", proficiency: 90, icon: FileSpreadsheet, desc: "Advanced modeling & data analysis" },
   { name: "SQL", proficiency: 80, icon: Database, desc: "Database querying & data extraction" },
-  { name: "R", proficiency: 70, icon: Binary, desc: "Statistical computing & analysis" },
   { name: "Python", proficiency: 80, icon: Terminal, desc: "Data science & automation scripting" },
   { name: "Machine Learning", proficiency: 70, icon: Cpu, desc: "Predictive modeling & algorithms" },
 ];
