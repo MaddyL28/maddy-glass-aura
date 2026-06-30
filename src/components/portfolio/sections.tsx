@@ -120,9 +120,8 @@ export function About() {
               </div>
               <div className="mt-6 grid grid-cols-3 gap-3 text-center">
                 {[
-                  { k: "5+", v: "Years" },
-                  { k: "40+", v: "Projects" },
-                  { k: "12", v: "Awards" },
+                  { k: "2+", v: "Years" },
+                  { k: "3+", v: "Projects" }
                 ].map((s) => (
                   <div key={s.v} className="rounded-2xl bg-white/5 p-3">
                     <div className="text-2xl font-bold text-gradient">{s.k}</div>
@@ -134,7 +133,7 @@ export function About() {
           </Reveal>
           <Reveal delay={120} className="md:col-span-3">
             <GlassCard className="h-full">
-              <h3 className="text-2xl font-bold sm:text-3xl">Designer & engineer based in Sydney.</h3>
+              <h3 className="text-2xl font-bold sm:text-3xl"> Data Analyst based in Adelaide.</h3>
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 I'm Maddy — a product-minded developer focused on the seam between design and
                 code. Over the past few years I've helped startups and studios ship interfaces
@@ -146,7 +145,7 @@ export function About() {
                 trails, or hunting the city's best matcha latte.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {["React", "TypeScript", "Design Systems", "Motion", "Accessibility"].map((t) => (
+                {["Problem-Solving", "Proactive", "Team work", "Data Visualisation", "Data Analysis"].map((t) => (
                   <span key={t} className="glass rounded-full px-3 py-1 text-xs text-foreground/80">
                     {t}
                   </span>
@@ -170,28 +169,29 @@ const projects = [
     accent: "from-primary/40 to-secondary/30",
     image: "/images/adventure-works.png",
     link: "https://github.com/MaddyL28/Adventure-Works-Sales-Analytics-Dashboard",
-  },
-  {
-    title: "Drift Studio",
-    tag: "Agency · Marketing",
-    desc: "Award-winning site for a motion design studio with WebGL transitions and case studies.",
-    stack: ["Next.js", "GSAP", "WebGL"],
-    accent: "from-secondary/40 to-accent/30",
-  },
-  {
-    title: "Pocket Pantry",
-    tag: "Mobile · Lifestyle",
-    desc: "AI-powered recipe app that learns what's in your fridge and plans your week.",
-    stack: ["React Native", "OpenAI"],
-    accent: "from-accent/40 to-primary/30",
-  },
-  {
-    title: "Northwind UI",
-    tag: "Open Source",
-    desc: "A headless component library focused on accessibility and theming-first APIs.",
-    stack: ["TypeScript", "Radix"],
-    accent: "from-primary/30 to-accent/40",
-  },
+  }
+  // ,
+  // {
+  //   title: "Drift Studio",
+  //   tag: "Agency · Marketing",
+  //   desc: "Award-winning site for a motion design studio with WebGL transitions and case studies.",
+  //   stack: ["Next.js", "GSAP", "WebGL"],
+  //   accent: "from-secondary/40 to-accent/30",
+  // },
+  // {
+  //   title: "Pocket Pantry",
+  //   tag: "Mobile · Lifestyle",
+  //   desc: "AI-powered recipe app that learns what's in your fridge and plans your week.",
+  //   stack: ["React Native", "OpenAI"],
+  //   accent: "from-accent/40 to-primary/30",
+  // },
+  // {
+  //   title: "Northwind UI",
+  //   tag: "Open Source",
+  //   desc: "A headless component library focused on accessibility and theming-first APIs.",
+  //   stack: ["TypeScript", "Radix"],
+  //   accent: "from-primary/30 to-accent/40",
+  // },
 ];
 
 export function Projects() {
